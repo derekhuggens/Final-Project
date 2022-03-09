@@ -2,10 +2,10 @@
 
 ## Presentation (SEGMENT 1)
 
-### Selected Topic: 
-### Reasons Why: 
-### Source Data: 
-### Questions to Answer: 
+### Selected Topic: Auto Insurance Claims
+### Reasons Why: From, https://insurancefraud.org/fraud-stats/, "Insurance fraud steals at least $80 billion every year from American consumers. (Coalition Against Insurance Fraud is working to update this figure in 2022)."
+### Source Data: From Kaggle.com, https://www.kaggle.com/buntyshah/auto-insurance-claims-data
+### Questions to Answer: What input features provide the greatest determination in insurance fraud detection? Which machine learning model will be most appropriate for a dataset of 40 columns with varying data types?  Will our insurance dataset need binning for categorical values that have a large number of unique values? Are the categorical variables' unique values distributed relatively evenly?
 
 ## GitHub Protocol
 
