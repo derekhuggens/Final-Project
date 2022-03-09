@@ -12,7 +12,7 @@
 ### Communication: Slack, GitBash comments, and GitHub request comments.
 
 ### Individal Branches: One branch for each team member:
-- Team Members are: Jason Mueller, Satar Shazar, and Derek Huggens.
+- Team Members are: Jason Mueller, Shazar Satar , and Derek Huggens.
 - Each team member must have at least four commits for the duration of each segment.
 
 ## Machine Learning Model
