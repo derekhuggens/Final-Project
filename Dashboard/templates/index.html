@@ -22,55 +22,55 @@
       <div class="col-md-12 text-center" id="description">
         <br>
         <p style="font-size: 24px; font-family: Times New Roman;">
-          Welcome to our vehicle insurance fraud modeler!<br><br> Below, you can find a .csv converted to JSON table containing a publicly available dataset from https://www.kaggle.com/buntyshah/auto-insurance-claims-data/activity that was used to build a PostgreSQL database and TensorFlow/Keras predictive model off of.<br><br>
+          Welcome to our vehicle insurance fraud modeler!<br><br> Below, you can find a .csv converted to JSON table containing a publicly available dataset from:<br> https://www.kaggle.com/buntyshah/auto-insurance-claims-data/activity <br>The dataset was used to build a PostgreSQL database and TensorFlow/Keras predictive model.<br><br>
         </p><br>
       </div>
     </div>
     <br>
     <br>
 
-  <table class="table table-striped">
-    <tr  class="bg-info">
-        <th>months_as_customer</th>	
-        <th>age</th>
-        <th>policy_number</th>
-        <th>policy_bind_date</th>
-        <th>policy_state</th>
-        <th>policy_csl</th>
-        <th>policy_deductable</th>
-        <th>policy_annual_premium</th>
-        <th>umbrella_limit</th>
-        <th>insured_zip</th>
-        <th>insured_sex</th>
-        <th>insured_education_level</th>
-        <th>insured_occupation</th>
-        <th>insured_hobbies</th>
-        <th>insured_relationship</th>
-        <th>capital_gains</th>
-        <th>capital_loss</th>
-        <th>incident_date</th>
-        <th>incident_type</th>
-        <th>collision_type</th>
-        <th>incident_severity</th>
-        <th>authorities_contacted</th>
-        <th>incident_state</th>
-        <th>incident_city</th>
-        <th>incident_location</th>
-        <th>incident_hour_of_the_day</th>
-        <th>number_of_vehicles_involved</th>
-        <th>property_damage</th>
-        <th>bodily_injuries</th>
-        <th>witnesses</th>
-        <th>police_report_available</th>
-        <th>total_claim_amount</th>
-        <th>injury_claim</th>
-        <th>property_claim</th>
-        <th>vehicle_claim</th>
-        <th>auto_make	auto_model</th>
-        <th>auto_year</th>
-        <th>fraud_reported</th>
-
-    </tr>
+<table class="table table-striped">
+  <tr  class="bg-info">
+      <th>months_as_customer</th>	
+      <th>age</th>
+      <th>policy_number</th>
+      <th>policy_bind_date</th>
+      <th>policy_state</th>
+      <th>policy_csl</th>
+      <th>policy_deductable</th>
+      <th>policy_annual_premium</th>
+      <th>umbrella_limit</th>
+      <th>insured_zip</th>
+      <th>insured_sex</th>
+      <th>insured_education_level</th>
+      <th>insured_occupation</th>
+      <th>insured_hobbies</th>
+      <th>insured_relationship</th>
+      <th>capital_gains</th>
+      <th>capital_loss</th>
+      <th>incident_date</th>
+      <th>incident_type</th>
+      <th>collision_type</th>
+      <th>incident_severity</th>
+      <th>authorities_contacted</th>
+      <th>incident_state</th>
+      <th>incident_city</th>
+      <th>incident_location</th>
+      <th>incident_hour_of_the_day</th>
+      <th>number_of_vehicles_involved</th>
+      <th>property_damage</th>
+      <th>bodily_injuries</th>
+      <th>witnesses</th>
+      <th>police_report_available</th>
+      <th>total_claim_amount</th>
+      <th>injury_claim</th>
+      <th>property_claim</th>
+      <th>vehicle_claim</th>
+      <th>auto_make
+      <th>auto_model</th>
+      <th>auto_year</th>
+      <th>fraud_reported</th>
+  </tr>
 
     <tbody id="myTable">
         
@@ -78,11 +78,16 @@
   </table>
 
   <script>
-    var myArray = require('./static/js/insurance_claims.json')
+    import jsonData from './static/js/insurance_claims.json'
     fetch("./static/js/insurance_claims.json").then(response => {
       return response.json();
     })
-    .then(myArray => console.log(myArray));
+    .then(function (data) {
+    appendData(data);
+    })
+    .catch(function (err) {
+    console.log(err);
+    });
 
     buildTable(myArray)
 
@@ -108,33 +113,33 @@
                 <td>${data[i].insured_occupation}</td>
                 <td>${data[i].insured_hobbies}</td>
                 <td>${data[i].insured_relationship}</td>
-                <td>${data[i].capital-gains}</td>
-                <td>${data[i].capital-loss}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
-                <td>${data[i].name}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].birthdate}</td>
+                <td>${data[i].capital_gains}</td>
+                <td>${data[i].capital_loss}</td>
+                <td>${data[i].incident_date}</td>
+                <td>${data[i].incident_type}</td>
+                <td>${data[i].collision_type}</td>
+                <td>${data[i].incident_severity}</td>
+                <td>${data[i].authorities_contacted}</td>
+                <td>${data[i].incident_state}</td>
+                <td>${data[i].incident_city}</td>
+                <td>${data[i].incident_location}</td>
+                <td>${data[i].incident_hour_of_the_day}</td>
+                <td>${data[i].number_of_vehicles_involved}</td>
+                <td>${data[i].property_damage}</td>
+                <td>${data[i].bodily_injuries}</td>
+                <td>${data[i].witnesses}</td>
+                <td>${data[i].police_report_available}</td>
+                <td>${data[i].total_claim_amount}</td>
+                <td>${data[i].injury_claim}</td>
+                <td>${data[i].property_claim}</td>
+                <td>${data[i].vehicle_claim}</td>
+                <td>${data[i].auto_make}</td>
+                <td>${data[i].auto_model}</td>
+                <td>${data[i].auto_year}</td>
+                <td>${data[i].fraud_reported}</td>
               </tr>`
         table.innerHTML += row
-
+        table.appendChild(row);
 
       }
     }
