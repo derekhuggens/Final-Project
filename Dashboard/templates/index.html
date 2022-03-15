@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Insurance Fraud Modeler</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Vehicle Insurance Fraud Modeler</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center" id="description">
+        <br>
+        <p style="font-size: 24px; font-family: Times New Roman;">
+          Welcome to our vehicle insurance fraud modeler!<br><br> Below, you can find a .csv converted to JSON table containing a publicly available dataset from https://www.kaggle.com/buntyshah/auto-insurance-claims-data/activity that was used to build a PostgreSQL database and TensorFlow/Keras predictive model off of.<br><br>
+        </p><br>
+      </div>
+    </div>
+    <br>
+    <br>
+
+  <table class="table table-striped">
+    <tr  class="bg-info">
+        <th>months_as_customer</th>	
+        <th>age</th>
+        <th>policy_number</th>
+        <th>policy_bind_date</th>
+        <th>policy_state</th>
+        <th>policy_csl</th>
+        <th>policy_deductable</th>
+        <th>policy_annual_premium</th>
+        <th>umbrella_limit</th>
+        <th>insured_zip</th>
+        <th>insured_sex</th>
+        <th>insured_education_level</th>
+        <th>insured_occupation</th>
+        <th>insured_hobbies</th>
+        <th>insured_relationship</th>
+        <th>capital_gains</th>
+        <th>capital_loss</th>
+        <th>incident_date</th>
+        <th>incident_type</th>
+        <th>collision_type</th>
+        <th>incident_severity</th>
+        <th>authorities_contacted</th>
+        <th>incident_state</th>
+        <th>incident_city</th>
+        <th>incident_location</th>
+        <th>incident_hour_of_the_day</th>
+        <th>number_of_vehicles_involved</th>
+        <th>property_damage</th>
+        <th>bodily_injuries</th>
+        <th>witnesses</th>
+        <th>police_report_available</th>
+        <th>total_claim_amount</th>
+        <th>injury_claim</th>
+        <th>property_claim</th>
+        <th>vehicle_claim</th>
+        <th>auto_make	auto_model</th>
+        <th>auto_year</th>
+        <th>fraud_reported</th>
+
+    </tr>
+
+    <tbody id="myTable">
+        
+    </tbody>
+  </table>
+
+  <script>
+    var myArray = require('./static/js/insurance_claims.json')
+    fetch("./static/js/insurance_claims.json").then(response => {
+      return response.json();
+    })
+    .then(myArray => console.log(myArray));
+
+    buildTable(myArray)
+
+
+
+    function buildTable(data){
+      var table = document.getElementById('myTable')
+
+      for (var i = 0; i < data.length; i++){
+        var row = `<tr>
+                <td>${data[i].months_as_customer}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].policy_number}</td>
+                <td>${data[i].policy_bind_date}</td>
+                <td>${data[i].policy_state}</td>
+                <td>${data[i].policy_csl}</td>
+                <td>${data[i].policy_deductible}</td>
+                <td>${data[i].policy_annual_premium}</td>
+                <td>${data[i].umbrella_limit}</td>
+                <td>${data[i].insured_zip}</td>
+                <td>${data[i].insured_sex}</td>
+                <td>${data[i].insured_education_level}</td>
+                <td>${data[i].insured_occupation}</td>
+                <td>${data[i].insured_hobbies}</td>
+                <td>${data[i].insured_relationship}</td>
+                <td>${data[i].capital-gains}</td>
+                <td>${data[i].capital-loss}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].age}</td>
+                <td>${data[i].birthdate}</td>
+              </tr>`
+        table.innerHTML += row
+
+
+      }
+    }
+
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="..Final-Project-\Dashboard\static\js\charts.js"></script>
+
+</body>
+
+</html>
