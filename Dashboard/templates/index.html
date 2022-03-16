@@ -78,8 +78,37 @@
   </table>
 
   <script type="module">
-    let dataJSON = './static/js/insurance_claims.json';
-    console.log(dataJSON);
+
+    let dataJSON = (fetch("insurance_claims.json")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      }));
+
+    // $.getJSON( "../static/js/insurance_claims.json", function( data ) {
+    //   var items = [];
+    //   $.each( data, function( key, val ) {
+    //     items.push( "<li id='" + key + "'>" + val + "</li>" );
+    //   });
+
+    //   $( "<ul/>", {
+    //     "class": "my-new-list",
+    //     html: items.join( "" )
+    //   }).appendTo( "body" );
+    // });
+
+    // let dataJSON = ('../static/js/insurance_claims.json');
+
+    // function getJson(path) {
+    //   return fetch(path).then((response) => response.json());
+    // }
+
+    // getJson(dataJSON).then((res) => 
+    //   console.log(res)
+    // );
+
+    //let dataJSON = '../static/js/insurance_claims.json';
+    //console.log(dataJSON.age);
     
     //import jsonData from './static/js/insurance_claims.json'
     //fetch("./static/js/insurance_claims.json").then(response => {
