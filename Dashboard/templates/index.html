@@ -21,13 +21,86 @@
     <div class="row">
       <div class="col-md-12 text-center" id="description">
         <br>
-        <p style="font-size: 24px; font-family: Times New Roman;">
-          Welcome to our vehicle insurance fraud modeler!<br><br> Below, you can find a .csv converted to JSON table containing a publicly available dataset from:<br> https://www.kaggle.com/buntyshah/auto-insurance-claims-data/activity <br>The dataset was used to build a PostgreSQL database and TensorFlow/Keras predictive model.<br><br>
+        <p style="font-size: 22px; font-family: Times New Roman;">
+          Welcome to our vehicle insurance fraud modeler!<br><br>
+          Submitting the form below will connect to the database, create a new row with your information, run the ML model,<br> and return a classification prediction.
         </p><br>
       </div>
     </div>
     <br>
+
+    <form action="/my-handling-form-page" method="post" width=600>
+      <ul>
+       <li>
+         <label for="gender_input">Gender:</label><br>
+         <input type="radio" name="gender_input" value="M"> Male<br>
+         <input type="radio" name="gender_input" value="F"> Female<br>
+       </li>
+       <li>
+         <label for="mail">Age:</label>
+         <input type="number" id="age" name="age_input">
+       </li>
+        <li>
+         <label for="name">Months as a Customer:</label>
+         <input type="number" id="customer_length" name="customer_length_input">
+        </li>
+        <li>
+         <label for="mail">Incident State:</label>
+         <input type="text" id="incident_state" name="incident_state_input">
+        </li>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+        </li>
+        <li>
+          <label for="mail">Auto Make:</label>
+          <input type="text" id="make" name="make_input">
+        </li>
+        <li>
+          <label for="name">Auto Model:</label>
+          <input type="text" id="model" name="model_input">
+        </li>
+        <li>
+          <label for="mail">Policy Deductible Amount:</label>
+          <input type="number" id="deductible" name="deductible_input">
+        </li>
+        <li class="button">
+          <button type="submit">Submit Claim Information</button>
+        </li>
+      </ul>
+     </form>
+     <br>
+
+     <div class="row">
+      <div class="col-md-12 text-center" id="description">
+        <br>
+        <p style="font-size: 22px; font-family: Times New Roman;">
+          Tableau Public Story <a href='https://public.tableau.com/app/profile/derek.huggens/viz/AutoInsuranceFraudModel/AutoInsuranceFraudReportStory'>Dashboard</a>
+        </p><br>
+      </div>
+    </div>
+     <div class='tableauPlaceholder' id='viz1647548288406' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1647548288406');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1016px';vizElement.style.height='1014px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     <br>
+     <div class="row">
+      <div class="col-md-12 text-center" id="description">
+        <br>
+        <p style="font-size: 22px; font-family: Times New Roman;">
+          Below is an interactive dashboard created with Metabase Open Source Edition.<br> The Metabase software was loaded as an image within a Docker container
+          and our PostgreSQL database was connected to Metabase using local host TCP/IP connections.
+        </p><br>
+      </div>
+    </div>
+
+     <iframe
+    src="http://localhost:3000/public/dashboard/3d7192ba-9774-4b94-916b-44bbcfd8fc4c"
+    frameborder="0"
+    width="1440"
+    height="720"
+    allowtransparency>
+    </iframe>
+    <br><br><br>
+
+</div>
 
 <table class="table table-striped">
   <tr  class="bg-info">
@@ -72,10 +145,10 @@
       <th>fraud_reported</th>
   </tr>
 
-    <tbody id="myTable">
+  <tbody id="myTable">
         
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
   <script type="module">
 
@@ -128,45 +201,45 @@
 
       for (var i = 0; i < data.length; i++){
         var row = `<tr>
-                <td>${data[i].months_as_customer}</td>
-                <td>${data[i].age}</td>
-                <td>${data[i].policy_number}</td>
-                <td>${data[i].policy_bind_date}</td>
-                <td>${data[i].policy_state}</td>
-                <td>${data[i].policy_csl}</td>
-                <td>${data[i].policy_deductible}</td>
-                <td>${data[i].policy_annual_premium}</td>
-                <td>${data[i].umbrella_limit}</td>
-                <td>${data[i].insured_zip}</td>
-                <td>${data[i].insured_sex}</td>
-                <td>${data[i].insured_education_level}</td>
-                <td>${data[i].insured_occupation}</td>
-                <td>${data[i].insured_hobbies}</td>
-                <td>${data[i].insured_relationship}</td>
-                <td>${data[i].capital_gains}</td>
-                <td>${data[i].capital_loss}</td>
-                <td>${data[i].incident_date}</td>
-                <td>${data[i].incident_type}</td>
-                <td>${data[i].collision_type}</td>
-                <td>${data[i].incident_severity}</td>
-                <td>${data[i].authorities_contacted}</td>
-                <td>${data[i].incident_state}</td>
-                <td>${data[i].incident_city}</td>
-                <td>${data[i].incident_location}</td>
-                <td>${data[i].incident_hour_of_the_day}</td>
-                <td>${data[i].number_of_vehicles_involved}</td>
-                <td>${data[i].property_damage}</td>
-                <td>${data[i].bodily_injuries}</td>
-                <td>${data[i].witnesses}</td>
-                <td>${data[i].police_report_available}</td>
-                <td>${data[i].total_claim_amount}</td>
-                <td>${data[i].injury_claim}</td>
-                <td>${data[i].property_claim}</td>
-                <td>${data[i].vehicle_claim}</td>
-                <td>${data[i].auto_make}</td>
-                <td>${data[i].auto_model}</td>
-                <td>${data[i].auto_year}</td>
-                <td>${data[i].fraud_reported}</td>
+                <td>${data[i].months_as_customer[i]}</td>
+                <td>${data[i].age[i]}</td>
+                <td>${data[i].policy_number[i]}</td>
+                <td>${data[i].policy_bind_date[i]}</td>
+                <td>${data[i].policy_state[i]}</td>
+                <td>${data[i].policy_csl[i]}</td>
+                <td>${data[i].policy_deductible[i]}</td>
+                <td>${data[i].policy_annual_premium[i]}</td>
+                <td>${data[i].umbrella_limit[i]}</td>
+                <td>${data[i].insured_zip[i]}</td>
+                <td>${data[i].insured_sex[i]}</td>
+                <td>${data[i].insured_education_level[i]}</td>
+                <td>${data[i].insured_occupation[i]}</td>
+                <td>${data[i].insured_hobbies[i]}</td>
+                <td>${data[i].insured_relationship[i]}</td>
+                <td>${data[i].capital_gains[i]}</td>
+                <td>${data[i].capital_loss[i]}</td>
+                <td>${data[i].incident_date[i]}</td>
+                <td>${data[i].incident_type[i]}</td>
+                <td>${data[i].collision_type[i]}</td>
+                <td>${data[i].incident_severity[i]}</td>
+                <td>${data[i].authorities_contacted[i]}</td>
+                <td>${data[i].incident_state[i]}</td>
+                <td>${data[i].incident_city[i]}</td>
+                <td>${data[i].incident_location[i]}</td>
+                <td>${data[i].incident_hour_of_the_day[i]}</td>
+                <td>${data[i].number_of_vehicles_involved[i]}</td>
+                <td>${data[i].property_damage[i]}</td>
+                <td>${data[i].bodily_injuries[i]}</td>
+                <td>${data[i].witnesses[i]}</td>
+                <td>${data[i].police_report_available[i]}</td>
+                <td>${data[i].total_claim_amount[i]}</td>
+                <td>${data[i].injury_claim[i]}</td>
+                <td>${data[i].property_claim[i]}</td>
+                <td>${data[i].vehicle_claim[i]}</td>
+                <td>${data[i].auto_make[i]}</td>
+                <td>${data[i].auto_model[i]}</td>
+                <td>${data[i].auto_year[i]}</td>
+                <td>${data[i].fraud_reported[i]}</td>
               </tr>`
         table.innerHTML += row
 
