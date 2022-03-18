@@ -49,10 +49,6 @@
          <input type="text" id="incident_state" name="incident_state_input">
         </li>
         <li>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="user_name">
-        </li>
-        <li>
           <label for="mail">Auto Make:</label>
           <input type="text" id="make" name="make_input">
         </li>
@@ -151,11 +147,80 @@
 </table>
 
   <script type="module">
+  
+  // var pg = require('pg');
+  
+  // var connectionString = "postgres://postgres:/ip:5432/insurance_fraud_db";
+  // var pgClient = new pg.Client(connectionString);
+
+  // pgClient.connect();
+
+  // var query = pgClient.query("SELECT policy_number from insurance_claims");
+
+  // query.on("row", function(row,result){
+
+  // result.addRow(row);
+
+  // });
+
+  function buildTable(data){
+      var table = document.getElementById('myTable')
+      console.log(data.data.length)
+      for (var i = 0; i < 10; i++){
+        // console.log(data.data[i].age);
+        var row = `<tr>
+                <td>${data.data[i].months_as_customer}</td>
+                <td>${data.data[i].age}</td>
+                <td>${data.data[i].policy_number}</td>
+                <td>${data.data[i].policy_bind_date}</td>
+                <td>${data.data[i].policy_state}</td>
+                <td>${data.data[i].policy_csl}</td>
+                <td>${data.data[i].policy_deductible}</td>
+                <td>${data.data[i].policy_annual_premium}</td>
+                <td>${data.data[i].umbrella_limit}</td>
+                <td>${data.data[i].insured_zip}</td>
+                <td>${data.data[i].insured_sex}</td>
+                <td>${data.data[i].insured_education_level}</td>
+                <td>${data.data[i].insured_occupation}</td>
+                <td>${data.data[i].insured_hobbies}</td>
+                <td>${data.data[i].insured_relationship}</td>
+                <td>${data.data[i].capital_gains}</td>
+                <td>${data.data[i].capital_loss}</td>
+                <td>${data.data[i].incident_date}</td>
+                <td>${data.data[i].incident_type}</td>
+                <td>${data.data[i].collision_type}</td>
+                <td>${data.data[i].incident_severity}</td>
+                <td>${data.data[i].authorities_contacted}</td>
+                <td>${data.data[i].incident_state}</td>
+                <td>${data.data[i].incident_city}</td>
+                <td>${data.data[i].incident_location}</td>
+                <td>${data.data[i].incident_hour_of_the_day}</td>
+                <td>${data.data[i].number_of_vehicles_involved}</td>
+                <td>${data.data[i].property_damage}</td>
+                <td>${data.data[i].bodily_injuries}</td>
+                <td>${data.data[i].witnesses}</td>
+                <td>${data.data[i].police_report_available}</td>
+                <td>${data.data[i].total_claim_amount}</td>
+                <td>${data.data[i].injury_claim}</td>
+                <td>${data.data[i].property_claim}</td>
+                <td>${data.data[i].vehicle_claim}</td>
+                <td>${data.data[i].auto_make}</td>
+                <td>${data.data[i].auto_model}</td>
+                <td>${data.data[i].auto_year}</td>
+                <td>${data.data[i].fraud_reported}</td>
+               </tr>`
+               console.log(row);
+        table.innerHTML += row
+      }
+    }
+
+
 
     let dataJSON = (fetch("insurance_claims.json")
       .then(response => response.json())
       .then(data => {
         console.log(data)
+      buildTable(data)
       }));
 
     // $.getJSON( "../static/js/insurance_claims.json", function( data ) {
@@ -193,58 +258,6 @@
     //.catch(function (err) {
     //console.log(err);
     //});
-
-    buildTable(dataJSON)
-
-    function buildTable(data){
-      var table = document.getElementById('myTable')
-
-      for (var i = 0; i < data.length; i++){
-        var row = `<tr>
-                <td>${data[i].months_as_customer[i]}</td>
-                <td>${data[i].age[i]}</td>
-                <td>${data[i].policy_number[i]}</td>
-                <td>${data[i].policy_bind_date[i]}</td>
-                <td>${data[i].policy_state[i]}</td>
-                <td>${data[i].policy_csl[i]}</td>
-                <td>${data[i].policy_deductible[i]}</td>
-                <td>${data[i].policy_annual_premium[i]}</td>
-                <td>${data[i].umbrella_limit[i]}</td>
-                <td>${data[i].insured_zip[i]}</td>
-                <td>${data[i].insured_sex[i]}</td>
-                <td>${data[i].insured_education_level[i]}</td>
-                <td>${data[i].insured_occupation[i]}</td>
-                <td>${data[i].insured_hobbies[i]}</td>
-                <td>${data[i].insured_relationship[i]}</td>
-                <td>${data[i].capital_gains[i]}</td>
-                <td>${data[i].capital_loss[i]}</td>
-                <td>${data[i].incident_date[i]}</td>
-                <td>${data[i].incident_type[i]}</td>
-                <td>${data[i].collision_type[i]}</td>
-                <td>${data[i].incident_severity[i]}</td>
-                <td>${data[i].authorities_contacted[i]}</td>
-                <td>${data[i].incident_state[i]}</td>
-                <td>${data[i].incident_city[i]}</td>
-                <td>${data[i].incident_location[i]}</td>
-                <td>${data[i].incident_hour_of_the_day[i]}</td>
-                <td>${data[i].number_of_vehicles_involved[i]}</td>
-                <td>${data[i].property_damage[i]}</td>
-                <td>${data[i].bodily_injuries[i]}</td>
-                <td>${data[i].witnesses[i]}</td>
-                <td>${data[i].police_report_available[i]}</td>
-                <td>${data[i].total_claim_amount[i]}</td>
-                <td>${data[i].injury_claim[i]}</td>
-                <td>${data[i].property_claim[i]}</td>
-                <td>${data[i].vehicle_claim[i]}</td>
-                <td>${data[i].auto_make[i]}</td>
-                <td>${data[i].auto_model[i]}</td>
-                <td>${data[i].auto_year[i]}</td>
-                <td>${data[i].fraud_reported[i]}</td>
-              </tr>`
-        table.innerHTML += row
-
-      }
-    }
 
   </script>
 
