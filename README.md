@@ -5,7 +5,7 @@
 #### Selected Topic: Auto Insurance Claims
 #### Why?: From, https://insurancefraud.org/fraud-stats/, "Insurance fraud steals at least $80 billion every year from American consumers. (Coalition Against Insurance Fraud is working to update this figure in 2022)."
 #### Source Data: From Kaggle.com, https://www.kaggle.com/buntyshah/auto-insurance-claims-data
-#### Google Slides: https://docs.google.com/presentation/d/1y_k0o3JL7F41ck7JR_ZUZAkdtDhq-rUcgMgWNbOPW1Q/edit?usp=sharing
+#### Google Slides: https://docs.google.com/presentation/d/1y_k0o3JL7F41ck7JR_ZUZAkdtDhq-rUcgMgWNbOPW1Q/edit#slide=id.p 3/22/2022
 #### Questions to Answer: 
 
 ##### Exploratory Data Analysis Questions (Dashboards, i.e. Tableau/PowerPoint)
