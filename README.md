@@ -81,7 +81,9 @@ Tools used to create final dashboard:
   - Tableau
   - Docker (Metabase)
   - Power BI
+  
 Description of interactive element(s):
+
   - HTML Form
   - Tableau Story with hovering elements
   - Metabase "X-Ray" Dashboard with hovering elements
