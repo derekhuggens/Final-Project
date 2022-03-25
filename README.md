@@ -48,7 +48,14 @@ This can be seen in our branch "ML_Model_JEM" which uses the following Python li
 ### Preliminary Preprocessing of ML Models:
 
 #### Data Preprocessing: 
-Firstly, we had to load the database into a notebook by connecting to PostgreSQL using psycopg2. Once connected, the database was queried and the columns with values were fetched and passed into a DataFrame. Columns with too many distinct values (some had 900+) were dropped. Datatypes were investigated and any columns that were "object" but held floats were converted using `.astype`. Our "fraud_reported" that contained "Y" and "N" strings were converted to "0" and "1." The features array was then created as all columns stored as "X_df" and the target variable "fraud_reported," was excluded. Another DataFrame was created to hold categorical columns with the "object" datatype and then be processed with `.index` and `.tolist()`. The number of unique values in each categorical column was accessed. From here, OneHotEncoder was used to fit and transform the categorical variable list into unique value columns. Finally, the encoded DataFrame was merged to the original features DataFrame "X_df," and the original categorical "object" type columns were dropped.
+ - Load database by connecting PostgresSQL using psycopg2
+ - Converted columns using .astype for the “objects”   
+ - Converted “fraud_reported”(target variable) from “Y” and “N” to “0” and “1”
+ - Features arrays which is all columns (excluding the target variable) stored as “X_df”
+ - Additional DataFrame was created to hold categorical columns with “Object”  using .index and .tolist()
+ - OneHotCoder used and transformed  categorical columns to unique columns
+ - Encoded DataFrame merged to original DataFrame “X_df” and “object” type columns were dropped   
+
 
 #### Feature Selection: 
 As described above, columns with too many distinct values were dropped, and categorical columns of "object" datatype were encoded into uniquely identifiable columns and merged into the master feature DataFrame "X_df."
