@@ -12,6 +12,8 @@
 
 <body>
 
+  <!-- Webpage header and description -->
+
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
@@ -28,6 +30,8 @@
       </div>
     </div>
     <br>
+
+    <!-- Form data input and submission -->
 
     <form action="/my-handling-form-page" method="post" width=600>
       <ul>
@@ -61,11 +65,16 @@
           <input type="number" id="deductible" name="deductible_input">
         </li>
         <li class="button">
-          <button type="submit">Submit Claim Information</button>
+          <button type="submit", id="submit">Submit Claim Information</button>
         </li>
       </ul>
-     </form>
+    </form>
+
+    <!-- button functionality, listener, on-click -->
+
      <br>
+
+    <!-- Tableau embed -->
 
      <div class="row">
       <div class="col-md-12 text-center" id="description">
@@ -77,6 +86,8 @@
     </div>
      <div class='tableauPlaceholder' id='viz1647548288406' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1647548288406');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1016px';vizElement.style.height='1014px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     <br>
+
+    <!-- Metabase embed -->
 
      <div class="row">
       <div class="col-md-12 text-center" id="description">
@@ -97,6 +108,8 @@
     </iframe>
     <br><br><br>
 
+    <!-- Power BI embed -->
+
     <div class="row">
       <div class="col-md-12 text-center" id="description">
         <br>
@@ -109,6 +122,8 @@
     <iframe title="Influencers" width="1440" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiYmE3ZTMzMjQtOTBlOS00NmMwLTlhZTYtZmViYjU0N2U2YjJmIiwidCI6IjViMTZlMTgyLTc4YjMtNDEyYy05MTk2LTY4MzQyNjg5ZWViNyIsImMiOjF9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
 
 </div>
+
+<!-- HTML Table for dataset in JSON format -->
 
 <table class="table table-striped">
   <tr  class="bg-info">
@@ -157,23 +172,9 @@
   </tbody>
 </table>
 
+  <!-- Function to create HTML table from JSON -->
+
   <script type="module">
-  
-  // var pg = require('pg');
-  
-  // var connectionString = "postgres://postgres:/ip:5432/insurance_fraud_db";
-  // var pgClient = new pg.Client(connectionString);
-
-  // pgClient.connect();
-
-  // var query = pgClient.query("SELECT policy_number from insurance_claims");
-
-  // query.on("row", function(row,result){
-
-  // result.addRow(row);
-
-  // });
-
   function buildTable(data){
       var table = document.getElementById('myTable')
       console.log(data.data.length)
@@ -224,7 +225,7 @@
       }
     }
 
-
+  // Import the JSON of our vehicle insurance fraud dataset
 
     let dataJSON = (fetch("insurance_claims.json")
       .then(response => response.json())
@@ -233,43 +234,9 @@
       buildTable(data)
       }));
 
-    // $.getJSON( "../static/js/insurance_claims.json", function( data ) {
-    //   var items = [];
-    //   $.each( data, function( key, val ) {
-    //     items.push( "<li id='" + key + "'>" + val + "</li>" );
-    //   });
-
-    //   $( "<ul/>", {
-    //     "class": "my-new-list",
-    //     html: items.join( "" )
-    //   }).appendTo( "body" );
-    // });
-
-    // let dataJSON = ('../static/js/insurance_claims.json');
-
-    // function getJson(path) {
-    //   return fetch(path).then((response) => response.json());
-    // }
-
-    // getJson(dataJSON).then((res) => 
-    //   console.log(res)
-    // );
-
-    //let dataJSON = '../static/js/insurance_claims.json';
-    //console.log(dataJSON.age);
-    
-    //import jsonData from './static/js/insurance_claims.json'
-    //fetch("./static/js/insurance_claims.json").then(response => {
-    //  return response.json();
-    //})
-    //.then(function (data) {
-    //appendData(data);
-    //})
-    //.catch(function (err) {
-    //console.log(err);
-    //});
-
   </script>
+
+  <!-- JS dependencies -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
