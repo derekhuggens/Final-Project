@@ -129,3 +129,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+Dashboard/node-api-postgres/config.js
+Dashboard/node-api-postgres/config.js
