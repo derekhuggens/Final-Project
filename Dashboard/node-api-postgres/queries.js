@@ -1,19 +1,12 @@
-
-
-// <script type="module">
-// </script>
-// module.exports = require('./config')
-// import {password} from '../node-api-postgres/config.js';
-//document.writeln("script type='text/javascript", src='../node-api-postgres/config');
-
+const pw = require("./config");
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: '',
+  user: pw.user,
   host: 'localhost',
   database: 'insurance_fraud_db',
-  password: '',
+  password: pw.password,
   port: 5432,
-})
+});
 
 const getColumns = (request, response) => {
     pool.query('SELECT age, months_as_customer, incident_state, auto_make, auto_model, policy_deductible FROM insurance_claims', (error, results) => {
@@ -34,6 +27,8 @@ const createNewRow = (request, response) => {
       response.status(201).send(`User added: `)
     })
   }
+
+
 
 module.exports = {
     getColumns,
