@@ -37,63 +37,70 @@
       <ul>
        <li>
          <label for="gender_input">Insured Sex:</label><br>
-         <input type="radio" id="genderMale" name="gender_input" value = "MALE" required="Yes" checked>Male
-         <input type="radio" id="genderFemale" name="gender_input" value = "FEMALE" required="Yes">Female
+         <input type="radio" id="genderMale" name="insured_sex" value = "MALE" required="Yes" checked>Male
+         <input type="radio" id="genderFemale" name="insured_sex" value = "FEMALE" required="Yes">Female
        </li>
        <li>
          <label for="age_input">Age:</label>
-         <input type="number" id="age" name="age_input" required="Yes" placeholder="Age" min="0">
+         <input type="number" id="age" name="age" required="Yes" placeholder="Age" min="0">
        </li>
         <li>
          <label for="customer_length_input">Months as a Customer:</label>
-         <input type="number" id="customer_length" name="customer_length_input" required="Yes" placeholder="Months as a Customer" min="0">
+         <input type="number" id="customer_length" name="months_as_customer" required="Yes" placeholder="Months as a Customer" min="0">
         </li>
         <li>
          <label for="incident_state_input">Incident State:</label><br>
-         <input type="radio" id="incident_stateNC" name="incident_state_input" value = "NC" required="Yes" checked>NC
-         <input type="radio" id="incident_stateNY" name="incident_state_input" value = "NY" required="Yes">NY
-         <input type="radio" id="incident_stateOH" name="incident_state_input" value = "OH" required="Yes">OH
-         <input type="radio" id="incident_statePA" name="incident_state_input" value = "PA" required="Yes">PA
-         <input type="radio" id="incident_stateSC" name="incident_state_input" value = "SC" required="Yes">SC
-         <input type="radio" id="incident_stateVA" name="incident_state_input" value = "VA" required="Yes">VA
-         <input type="radio" id="incident_stateWV" name="incident_state_input" value = "WV" required="Yes">WV
+         <input type="radio" id="incident_stateNC" name="incident_state" value = "NC" required="Yes" checked>NC
+         <input type="radio" id="incident_stateNY" name="incident_state" value = "NY" required="Yes">NY
+         <input type="radio" id="incident_stateOH" name="incident_state" value = "OH" required="Yes">OH
+         <input type="radio" id="incident_statePA" name="incident_state" value = "PA" required="Yes">PA
+         <input type="radio" id="incident_stateSC" name="incident_state" value = "SC" required="Yes">SC
+         <input type="radio" id="incident_stateVA" name="incident_state" value = "VA" required="Yes">VA
+         <input type="radio" id="incident_stateWV" name="incident_state" value = "WV" required="Yes">WV
         </li>
         <li>
           <label for="make_input">Auto Make:</label>
-          <input type="text" id="make" name="make_input" required="Yes" placeholder="Auto Make">
+          <input type="text" id="make" name="auto_make" required="Yes" placeholder="Auto Make">
         </li>
         <li>
           <label for="model_input">Auto Model:</label>
-          <input type="text" id="model" name="model_input" required="Yes" placeholder="Auto Model">
+          <input type="text" id="model" name="auto_model" required="Yes" placeholder="Auto Model">
         </li>
         <li>
           <label for="deductible_input">Policy Deductible Amount:</label><br>
-          <input type="radio" id="deductible500" name="deductible_input" value = 500 required="Yes" checked>$500
-          <input type="radio" id="deductible1000" name="deductible_input" value = 1000 required="Yes">$1000
-          <input type="radio" id="deductible2000" name="deductible_input" value = 2000 required="Yes">$2000
+          <input type="radio" id="deductible500" name="policy_deductible" value = 500 required="Yes" checked>$500
+          <input type="radio" id="deductible1000" name="policy_deductible" value = 1000 required="Yes">$1000
+          <input type="radio" id="deductible2000" name="policy_deductible" value = 2000 required="Yes">$2000
         </li>
         <li class="button">
-          <input type="submit"></button>
+          <input type="submit"></button><br><br>
+          <p id="log"></p>
         </li>
       </ul>
     </form>
     <br>
-    <p id="log"></p>
+  
 
     <!-- button functionality, listener, on-click -->
 
     <script>
-      // function logSubmit(event){
-      //   log.textContent = `Form Submitted!`;
-      //   event.preventDefault();
-      // }
+      function logSubmit(event){
+        log.textContent = `Form Submitted!`;
+        event.preventDefault();
+      }
 
       var form = document.getElementById('newform');
-      // var log = document.getElementById('log');
+      var log = document.getElementById('log');
 
       form.addEventListener('submit', function handleSubmit(event){
         event.preventDefault()
-        
+        logSubmit(event)
+
+        var data = new FormData(event.target);
+        var value = Object.fromEntries(data.entries());
+        console.log({value});
+
+        // insured_sex value
         if(document.getElementById('genderMale').checked){
           var genderMale = document.getElementById('genderMale').value;
           console.log(genderMale);
@@ -102,11 +109,16 @@
           var genderFemale = document.getElementById('genderFemale').value;
           console.log(genderFemale);
         };
+
+        // age value
         var age = document.getElementById('age').value;
         console.log(age);
+
+        // months_as_customer value
         var months = document.getElementById('customer_length').value;
         console.log(months);
         
+        // incident_state value
         if(document.getElementById('incident_stateNC').checked){
           var incidentStateNC = document.getElementById('incident_stateNC').value;
         console.log(incidentStateNC);
@@ -136,11 +148,15 @@
         console.log(incidentStateWV);
         };
 
+        // auto_make value
         var make = document.getElementById('make').value;
         console.log(make);
+
+        // auto_model value
         var model = document.getElementById('model').value;
         console.log(model);
 
+        // policy_deductible value
         if(document.getElementById('deductible500').checked){
         var deductibleFiveHundred = document.getElementById('deductible500').value;
         console.log(deductibleFiveHundred);
@@ -154,11 +170,18 @@
         console.log(deductibleTwoThousand);
         };
 
-        // var inputs = document.querySelectorAll('#genderM, #genderF, #age, #customer_length, #incident_state, #make, #model, #deductible');
-        
-        // inputs.forEach(input => {
-        //   input.value = '';
-        // });
+        // var jsonDatabase = {
+        //   insured_sex: "hi",
+        //   age: "hi",
+        //   months_as_customer: "hi",
+        //   incident_state: "hi",
+        //   auto_make: "hi",
+        //   auto_model: "hi",
+        //   policy_deductible: "hi"
+        // }
+
+        // let jsonDatabaseString = JSON.stringify(jsonDatabase);
+        // console.log(jsonDatabaseString);
 
         form.reset();
       });
