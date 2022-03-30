@@ -33,53 +33,137 @@
 
     <!-- Form data input and submission -->
 
-    <form id="newform" action="/my-handling-form-page" method="POST" width=600>
+    <form id="newform" width=1200>
       <ul>
        <li>
-         <label for="gender_input">Gender:</label><br>
-         <input type="radio" id="gender" name="gender_input" value="M" required="Yes"> Male<br>
-         <input type="radio" id="gender" name="gender_input" value="F"> Female<br>
+         <label for="gender_input">Insured Sex:</label><br>
+         <input type="radio" id="genderMale" name="gender_input" value = "MALE" required="Yes" checked>Male
+         <input type="radio" id="genderFemale" name="gender_input" value = "FEMALE" required="Yes">Female
        </li>
        <li>
-         <label for="mail">Age:</label>
-         <input type="number" id="age" name="age_input" required="Yes">
+         <label for="age_input">Age:</label>
+         <input type="number" id="age" name="age_input" required="Yes" placeholder="Age" min="0">
        </li>
         <li>
-         <label for="name">Months as a Customer:</label>
-         <input type="number" id="customer_length" name="customer_length_input" required="Yes">
+         <label for="customer_length_input">Months as a Customer:</label>
+         <input type="number" id="customer_length" name="customer_length_input" required="Yes" placeholder="Months as a Customer" min="0">
         </li>
         <li>
-         <label for="mail">Incident State:</label>
-         <input type="text" id="incident_state" name="incident_state_input" required="Yes">
+         <label for="incident_state_input">Incident State:</label><br>
+         <input type="radio" id="incident_stateNC" name="incident_state_input" value = "NC" required="Yes" checked>NC
+         <input type="radio" id="incident_stateNY" name="incident_state_input" value = "NY" required="Yes">NY
+         <input type="radio" id="incident_stateOH" name="incident_state_input" value = "OH" required="Yes">OH
+         <input type="radio" id="incident_statePA" name="incident_state_input" value = "PA" required="Yes">PA
+         <input type="radio" id="incident_stateSC" name="incident_state_input" value = "SC" required="Yes">SC
+         <input type="radio" id="incident_stateVA" name="incident_state_input" value = "VA" required="Yes">VA
+         <input type="radio" id="incident_stateWV" name="incident_state_input" value = "WV" required="Yes">WV
         </li>
         <li>
-          <label for="mail">Auto Make:</label>
-          <input type="text" id="make" name="make_input" required="Yes">
+          <label for="make_input">Auto Make:</label>
+          <input type="text" id="make" name="make_input" required="Yes" placeholder="Auto Make">
         </li>
         <li>
-          <label for="name">Auto Model:</label>
-          <input type="text" id="model" name="model_input" required="Yes">
+          <label for="model_input">Auto Model:</label>
+          <input type="text" id="model" name="model_input" required="Yes" placeholder="Auto Model">
         </li>
         <li>
-          <label for="mail">Policy Deductible Amount:</label>
-          <input type="number" id="deductible" name="deductible_input" required="Yes">
+          <label for="deductible_input">Policy Deductible Amount:</label><br>
+          <input type="radio" id="deductible500" name="deductible_input" value = 500 required="Yes" checked>$500
+          <input type="radio" id="deductible1000" name="deductible_input" value = 1000 required="Yes">$1000
+          <input type="radio" id="deductible2000" name="deductible_input" value = 2000 required="Yes">$2000
         </li>
         <li class="button">
-          <button class="btn btn-success" type="submit", id="submit">Submit Claim Information</button>
+          <input type="submit"></button>
         </li>
       </ul>
     </form>
+    <br>
+    <p id="log"></p>
 
     <!-- button functionality, listener, on-click -->
 
-    <!-- pug
-    
-    <html>
-      <body>
-        form(method="get" action="/foo")
-          input(type="submit", value ="run foo")
-      </body>
-    </html> -->
+    <script>
+      // function logSubmit(event){
+      //   log.textContent = `Form Submitted!`;
+      //   event.preventDefault();
+      // }
+
+      var form = document.getElementById('newform');
+      // var log = document.getElementById('log');
+
+      form.addEventListener('submit', function handleSubmit(event){
+        event.preventDefault()
+        
+        if(document.getElementById('genderMale').checked){
+          var genderMale = document.getElementById('genderMale').value;
+          console.log(genderMale);
+        };
+        if(document.getElementById('genderFemale').checked){
+          var genderFemale = document.getElementById('genderFemale').value;
+          console.log(genderFemale);
+        };
+        var age = document.getElementById('age').value;
+        console.log(age);
+        var months = document.getElementById('customer_length').value;
+        console.log(months);
+        
+        if(document.getElementById('incident_stateNC').checked){
+          var incidentStateNC = document.getElementById('incident_stateNC').value;
+        console.log(incidentStateNC);
+        };
+        if(document.getElementById('incident_stateNY').checked){
+          var incidentStateNY = document.getElementById('incident_stateNY').value;
+        console.log(incidentStateNY);
+        };
+        if(document.getElementById('incident_stateOH').checked){
+          var incidentStateOH = document.getElementById('incident_stateOH').value;
+        console.log(incidentStateOH);
+        };
+        if(document.getElementById('incident_statePA').checked){
+          var incidentStatePA = document.getElementById('incident_statePA').value;
+        console.log(incidentStatePA);
+        };
+        if(document.getElementById('incident_stateSC').checked){
+          var incidentStateSC = document.getElementById('incident_stateSC').value;
+        console.log(incidentStateSC);
+        };
+        if(document.getElementById('incident_stateVA').checked){
+          var incidentStateVA = document.getElementById('incident_stateVA').value;
+        console.log(incidentStateVA);
+        };
+        if(document.getElementById('incident_stateWV').checked){
+          var incidentStateWV = document.getElementById('incident_stateWV').value;
+        console.log(incidentStateWV);
+        };
+
+        var make = document.getElementById('make').value;
+        console.log(make);
+        var model = document.getElementById('model').value;
+        console.log(model);
+
+        if(document.getElementById('deductible500').checked){
+        var deductibleFiveHundred = document.getElementById('deductible500').value;
+        console.log(deductibleFiveHundred);
+        };
+        if(document.getElementById('deductible1000').checked){
+        var deductibleOneThousand = document.getElementById('deductible1000').value;
+        console.log(deductibleOneThousand);
+        };
+        if(document.getElementById('deductible2000').checked){
+        var deductibleTwoThousand = document.getElementById('deductible2000').value;
+        console.log(deductibleTwoThousand);
+        };
+
+        // var inputs = document.querySelectorAll('#genderM, #genderF, #age, #customer_length, #incident_state, #make, #model, #deductible');
+        
+        // inputs.forEach(input => {
+        //   input.value = '';
+        // });
+
+        form.reset();
+      });
+      
+    </script>
 
      <br>
 
@@ -93,7 +177,19 @@
         </p><br>
       </div>
     </div>
-     <div class='tableauPlaceholder' id='viz1647548288406' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1647548288406');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1016px';vizElement.style.height='1014px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+    <div class='tableauPlaceholder' id='viz1647548288406' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1_rss.png' 
+      style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' />
+      <param name='name' value='AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' />
+      <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Au&#47;AutoInsuranceFraudModel&#47;AutoInsuranceFraudReportStory&#47;1.png' />
+      <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>       
+
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1647548288406'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width='1016px';vizElement.style.height='1014px';
+      var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+
     <br>
 
     <!-- Metabase embed -->
@@ -253,8 +349,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="../static/js/charts.js"></script>
-  <script src="../Dashboard/node-api-postgres/index.js"></script>
-  <script src="../Dashboard/node-api-postgres/queries.js"></script>
+  <script src="../node-api-postgres/index.js"></script>
+  <script src="../node-api-postgres/queries.js"></script>
 
 
 </body>
