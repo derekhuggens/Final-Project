@@ -12,7 +12,8 @@
 
 - Average months as a customer?
 - Average age of customers?
-- ![Table_20SQL](https://user-images.githubusercontent.com/89805399/160727592-242daf4e-a978-4008-8462-300730fe6304.png)
+![avg months and age as customers](https://user-images.githubusercontent.com/89805399/161166306-54cd7343-c0a6-4cc4-90d9-af7205cde4e0.PNG)
+
 
 - Policy annual premiums between genders? Between ages?
 - Incident severity between genders? Between ages?
