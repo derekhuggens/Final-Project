@@ -14,9 +14,6 @@ https://derekhuggens.github.io/Final-Project/
 
 - Average months as a customer?
 - Average age of customers?
-![avg months and age as customers](https://user-images.githubusercontent.com/89805399/161166306-54cd7343-c0a6-4cc4-90d9-af7205cde4e0.PNG)
-
-
 - Policy annual premiums between genders? Between ages?
 - Incident severity between genders? Between ages?
 - Location based insurance statistics
