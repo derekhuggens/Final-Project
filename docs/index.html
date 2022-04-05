@@ -11,9 +11,40 @@
 </head>
 
 <body>
+  <!-- Navigation Bar -->
+  <div class="topnav" id="navbar">
+    <a href="#home" class="active">Home</a>
+    <a href="your_report.html" class="active">EDA</a>
+    <a href="#form" class="active"a>Form</a>
+    <a href="#tableau" class="active">Tableau</a>
+    <a href="#metabase" class="active">Metabase</a>
+    <a href="#powerbi" class="active">PowerBI</a>
+    <a href="#datasetpreview" class="active">Dataset Preview</a>
+  </div>
+
+  <script>
+  // When the user scrolls the page, execute myFunction
+  window.onscroll = function() {myFunction()};
+  
+  // Get the navbar
+  var navbar = document.getElementById("navbar");
+  
+  // Get the offset position of the navbar
+  var sticky = navbar.offsetTop;
+  
+  // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  </script>
 
   <!-- Webpage header and description -->
 
+  <a id="home" data-hs-anchor="true"></a>
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
@@ -26,15 +57,22 @@
         <p style="font-size: 22px; font-family: Times New Roman;">
           Welcome to our vehicle insurance fraud modeler!<br>
         </p>
-        <p style="font-size: 18px; font-family: Times New Roman;">  
-          Submitting the form below will connect to the database, create a new row with your information, run the ML model,<br> and return a classification prediction.
+        <p style="font-size: 18px; font-family: Times New Roman;"></p>
+          Submitting the form below will connect to a PostgreSQL database and create a new row with your information.<br>
+          This new row of information can then be run through machine learning models to return a classification prediction for fraudulent vehicle insurance claims.<br>
         </p>
+
+        <p>Navigate to the bottom of the page:
+          <a href = "#bottom">Click Here</a>
+          </p>
+
       </div>
     </div>
     <br>
 
     <!-- Form data input and submission -->
 
+    <a id="form" data-hs-anchor="true"></a>
     <form id="newform" width=1200>
       <ul>
        <li>
@@ -82,7 +120,6 @@
     </form>
     <br>
   
-
     <!-- button functionality, listener, on-click -->
 
     <script>
@@ -190,10 +227,10 @@
       
     </script>
 
-     <br>
+    <br>
 
     <!-- Tableau embed -->
-
+    <a id="tableau" data-hs-anchor="true"></a>
      <div class="row">
       <div class="col-md-12 text-center" id="description">
         <br>
@@ -219,6 +256,7 @@
 
     <!-- Metabase embed -->
 
+    <a id="metabase" data-hs-anchor="true"></a>
      <div class="row">
       <div class="col-md-12 text-center" id="description">
         <br>
@@ -229,16 +267,18 @@
       </div>
     </div>
 
-    <iframe
+     <iframe
     src="http://localhost:3000/public/dashboard/cff3fc6e-92ee-4954-9aeb-b57b9394e44c"
     frameborder="0"
     width="1200"
     height="720"
-    allowtransparency></iframe>
+    allowtransparency>
+    </iframe>
     <br><br><br>
 
     <!-- Power BI embed -->
 
+    <a id="powerbi" data-hs-anchor="true"></a>
     <div class="row">
       <div class="col-md-12 text-center" id="description">
         <br>
@@ -248,12 +288,18 @@
       </div>
     </div>
     
-    <iframe title="Influencers" width="1440" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiYmE3ZTMzMjQtOTBlOS00NmMwLTlhZTYtZmViYjU0N2U2YjJmIiwidCI6IjViMTZlMTgyLTc4YjMtNDEyYy05MTk2LTY4MzQyNjg5ZWViNyIsImMiOjF9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+    <iframe title="Influencers" width="1200" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiYmE3ZTMzMjQtOTBlOS00NmMwLTlhZTYtZmViYjU0N2U2YjJmIiwidCI6IjViMTZlMTgyLTc4YjMtNDEyYy05MTk2LTY4MzQyNjg5ZWViNyIsImMiOjF9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+
+    <a id="bottom" data-hs-anchor="true"></a>
+    <p>Navigate to the top of the page:
+    <a href = "#top">Click Here</a>
+    </p>
 
 </div>
 
 <!-- HTML Table for dataset in JSON format -->
 
+<a id="datasetpreview" data-hs-anchor="true"></a>
 <table class="table table-striped">
   <tr  class="bg-info">
       <th>months_as_customer</th>	
