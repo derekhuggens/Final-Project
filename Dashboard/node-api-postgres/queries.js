@@ -1,10 +1,10 @@
 const pw = require("./config");
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: username_db,
+  user: pw.username_db,
   host: 'localhost',
   database: 'insurance_fraud_db',
-  password: password_db,
+  password: pw.password_db,
   port: 5432,
 });
 
