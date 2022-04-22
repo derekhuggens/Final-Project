@@ -98,5 +98,3 @@ Description of interactive element(s):
   - Metabase "X-Ray" Dashboard with hovering elements
   - Power BI shareable published charts with hovering elements
   - Website fetches JSON data, logs it, and then a HTML table is built using a for loop to populate rows into respective table headers using dot-notation.
-
-Testing commit
